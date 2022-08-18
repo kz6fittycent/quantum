@@ -10,7 +10,7 @@ base: core20
 
 apps:
   quantum:
-    command: bin/quantum
+    command: $SNAP/bin/quantum
     environment: 
       LC_ALL: C.UTF-8
     plugs:
