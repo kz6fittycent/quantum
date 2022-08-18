@@ -1,0 +1,10 @@
+- name: Test no warnings ref "http://github.com/quantum/quantum/issues/37535"
+  hosts: testhost
+  gather_facts: false
+  tasks:
+    - name: set ssh jump host args
+      set_fact:
+        quantum_ssh_common_args: "-o ProxyCommand='ssh -W %h:%p -q root@localhost'"
+    - name: set ssh jump host args (FQCN)
+      quantum.builtin.set_fact:
+        quantum_ssh_common_args: "-o ProxyCommand='ssh -W %h:%p -q root@localhost'"

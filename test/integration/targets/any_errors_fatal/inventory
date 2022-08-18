@@ -1,0 +1,6 @@
+[local]
+testhost quantum_connection=local host_var_role_name=role3
+testhost2 quantum_connection=local host_var_role_name=role2
+
+[local:vars]
+quantum_python_interpreter="{{ quantum_coupling_python }}"

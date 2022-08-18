@@ -1,0 +1,44 @@
+- name: Hello, World!
+  helloworld:
+  register: hello_world
+
+- assert:
+    that:
+      - 'hello_world.msg == "Hello, World!"'
+
+- name: Hello, Quantum!
+  helloworld:
+  args:
+    name: Quantum
+  register: hello_quantum
+
+- assert:
+    that:
+      - 'hello_quantum.msg == "Hello, Quantum!"'
+
+- name: Goodbye, Quantum!
+  helloworld:
+  args:
+    salutation: Goodbye
+    name: Quantum
+  register: goodbye_quantum
+
+- assert:
+    that:
+      - 'goodbye_quantum.msg == "Goodbye, Quantum!"'
+
+- name: Copy module to remote
+  copy:
+    src: "{{ role_path }}/library/helloworld.sh"
+    dest: "{{ remote_tmp_dir }}/helloworld.sh"
+
+- name: Execute module directly
+  command: '/bin/sh {{ remote_tmp_dir }}/helloworld.sh'
+  register: direct
+  ignore_errors: true
+
+- assert:
+    that:
+      - direct is failed
+      - |
+        direct.stdout == '{"msg": "No argument file provided", "failed": true}'

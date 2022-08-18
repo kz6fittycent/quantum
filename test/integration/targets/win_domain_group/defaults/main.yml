@@ -1,0 +1,3 @@
+test_win_domain_group_ldap_base: DC=quantum,DC=local
+test_win_domain_group_ou_path: OU=ou1,DC=quantum,DC=local
+test_win_domain_group_name: Moo Cow

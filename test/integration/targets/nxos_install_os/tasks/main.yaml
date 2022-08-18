@@ -1,0 +1,10 @@
+---
+# Upgrade using SSH
+- include: network_cli.yaml
+  when: quantum_connection == 'network_cli'
+
+# Upgrade using NX-API
+- include: httpapi.yaml
+  when: quantum_connection == 'httpapi'
+- include: nxapi.yaml
+  when: quantum_connection == 'local'

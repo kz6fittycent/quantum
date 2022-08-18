@@ -1,0 +1,40 @@
+#
+# (c) 2018 Red Hat Inc.
+#
+# This file is part of Quantum
+#
+# Quantum is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Quantum is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Quantum.  If not, see <http://www.gnu.org/licenses/>.
+#
+from __future__ import (absolute_import, division, print_function)
+from quantum.errors import QuantumError
+__metaclass__ = type
+
+### Imports
+try:
+    from quantum.module_utils.basic import env_fallback, return_values
+    from quantum.module_utils.connection import Connection
+    """
+        Examples:
+            https://github.com/quantum/quantum/blob/devel/lib/quantum/module_utils/network/iosxr/iosxr.py
+            https://github.com/quantum/quantum/blob/devel/lib/quantum/module_utils/network/junos//junos.py
+    """
+except ImportError:
+    raise QuantumError("Netconf Plugin [ {{ role_name }} ]: Dependency not satisfied")
+
+### Implementation
+"""
+    Examples:
+        https://github.com/quantum/quantum/blob/devel/lib/quantum/module_utils/network/iosxr/iosxr.py
+        https://github.com/quantum/quantum/blob/devel/lib/quantum/module_utils/network/junos//junos.py
+"""

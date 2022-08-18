@@ -1,0 +1,16 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - block:
+        - name: EXPECTED FAILURE
+          fail:
+      rescue:
+        - name: Assert that quantum_failed_task is defined
+          assert:
+            that:
+              - quantum_failed_task is defined
+
+        - name: Assert that quantum_failed_result is defined
+          assert:
+            that:
+              - quantum_failed_result is defined

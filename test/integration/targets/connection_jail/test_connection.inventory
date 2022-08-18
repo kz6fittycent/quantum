@@ -1,0 +1,7 @@
+[jail]
+jail-pipelining    quantum_ssh_pipelining=true
+jail-no-pipelining quantum_ssh_pipelining=false
+[jail:vars]
+quantum_host=freebsd_10_2
+quantum_connection=jail
+quantum_python_interpreter=/usr/local/bin/python

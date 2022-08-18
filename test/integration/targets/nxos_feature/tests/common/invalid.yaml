@@ -1,0 +1,15 @@
+---
+- debug: msg="START connection={{ quantum_connection }}/invalid.yaml"
+
+- name: configure invalid feature name
+  nxos_feature:
+    feature: invalid
+    provider: "{{ connection }}"
+  register: result
+  ignore_errors: yes
+
+- assert:
+    that:
+      - result.failed == true
+
+- debug: msg="END connection={{ quantum_connection }}/invalid.yaml"

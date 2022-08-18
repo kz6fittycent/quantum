@@ -1,0 +1,2 @@
+- import_tasks: tests.yml
+  when: quantum_distribution == 'Ubuntu'

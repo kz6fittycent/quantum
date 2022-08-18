@@ -1,0 +1,10 @@
+{
+    "prefixes": [
+        "lib/quantum/modules/",
+        "plugins/modules/"
+    ],
+    "extensions": [
+        ".py"
+    ],
+    "output": "path-line-column-message"
+}

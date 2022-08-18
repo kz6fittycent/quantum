@@ -1,0 +1,10 @@
+- import_coupling: coupling1.yml            # Test tag in tasks in included play
+- import_coupling: coupling2.yml            # Test tag added to import_coupling
+  tags:
+    - canary22
+
+- import_coupling: coupling3.yml            # Test skipping tags added to import_coupling
+  tags:
+    - skipme
+
+- import_coupling: validate_tags.yml        # Validate

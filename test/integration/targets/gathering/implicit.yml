@@ -1,0 +1,23 @@
+- hosts: testhost
+  tasks:
+    - name: check that facts were gathered but no local facts exist
+      assert:
+        that:
+            - quantum_facts is defined and 'fqdn' in quantum_facts
+            - not 'uuid' in quantum_local
+    - name: create 'local facts' for next gathering
+      copy:
+        src: uuid.fact
+        dest: /etc/quantum/facts.d/
+        mode: 0755
+
+- hosts: testhost
+  tasks:
+    - name: ensure facts are gathered and includes the new 'local facts' created above
+      assert:
+        that:
+            - quantum_facts is defined and 'fqdn' in quantum_facts
+            - "'uuid' in quantum_local"
+
+    - name: cleanup 'local facts' from target
+      file: path=/etc/quantum/facts.d/uuid.fact state=absent

@@ -1,0 +1,5 @@
+quantum (%VERSION%-%RELEASE%~%DIST%) %DIST%; urgency=low
+
+  * %VERSION% release
+
+ -- Quantum, Inc. <info@quantum.com>  %DATE%

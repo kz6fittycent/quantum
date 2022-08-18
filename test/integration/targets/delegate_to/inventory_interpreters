@@ -1,0 +1,5 @@
+testhost quantum_python_interpreter=firstpython
+testhost2 quantum_python_interpreter=secondpython
+
+[all:vars]
+quantum_connection=local

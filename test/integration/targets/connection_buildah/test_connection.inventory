@@ -1,0 +1,12 @@
+[buildah]
+buildah-container    quantum_ssh_pipelining=true
+[buildah:vars]
+# 1. install buildah
+# 2. create container:
+# $ sudo buildah from --name=buildah-container python:2
+# 3. run test:
+# $ quantum-test integration connection_buildah
+# 6. remove container
+# $ sudo buildah rm buildah-container
+quantum_host=buildah-container
+quantum_connection=buildah

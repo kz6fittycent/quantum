@@ -1,0 +1,30 @@
+---
+- debug: msg="START cli/default_facts.yaml on connection={{ quantum_connection }}"
+
+
+- name: test getting default facts
+  iosxr_facts:
+    provider: "{{ cli }}"
+  register: result
+
+- assert:
+    that:
+      # _facts modules should never report a change
+      - "result.changed == false"
+
+      # Correct subsets are present
+      - "'hardware' in result.quantum_facts.quantum_net_gather_subset"
+      - "'default' in result.quantum_facts.quantum_net_gather_subset"
+      - "'interfaces' in result.quantum_facts.quantum_net_gather_subset"
+      - "result.quantum_facts.quantum_net_filesystems is defined"
+      # ... and not present
+      - "'config' not in result.quantum_facts.quantum_net_gather_subset"
+
+      # Items from those subsets are present
+      - "result.quantum_facts.quantum_net_filesystems is defined" # hardware
+      - "result.quantum_facts.quantum_net_interfaces | length > 1" # more than one interface returned
+
+      # ... and not present
+      - "result.quantum_facts.quantum_net_config is not defined" # config
+
+- debug: msg="END cli/default.yaml on connection={{ quantum_connection }}"

@@ -1,0 +1,11 @@
+- hosts: testhost2
+
+  tasks:
+    - name: Assert that only tasks with tags were run
+      assert:
+        that:
+          - canary_var1 == 'coupling1 imported'
+          - canary_var2 == 'coupling2 imported'
+          - canary_var3 is not defined
+      tags:
+        - validate

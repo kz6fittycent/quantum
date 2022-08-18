@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: prepare_junos_tests, when: quantum_network_os == 'junos' }
+  - { role: prepare_iosxr_tests, when: quantum_network_os == 'iosxr' }

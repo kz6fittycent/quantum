@@ -1,0 +1,84 @@
+---
+- set_fact:
+    test_username: quantum-test
+    test_password: Password123{{ lookup('password', '/dev/null chars=ascii_letters,digits length=8') }}
+
+- name: create test Admin user
+  win_user:
+    name: '{{ test_username }}'
+    password: '{{ test_password }}'
+    state: present
+    groups:
+    - Administrators
+
+- block:
+  - name: test Quantum.AccessToken.cs
+    quantum_access_token_tests:
+      test_username: '{{ test_username }}'
+      test_password: '{{ test_password }}'
+    register: quantum_access_token_test
+
+  - name: assert test Quantum.AccessToken.cs
+    assert:
+      that:
+      - quantum_access_token_test.data == "success"
+  always:
+  - name: remove test Admin user
+    win_user:
+      name: '{{ test_username }}'
+      state: absent
+
+- name: test Quantum.Basic.cs
+  quantum_basic_tests:
+  register: quantum_basic_test
+
+- name: assert test Quantum.Basic.cs
+  assert:
+    that:
+    - quantum_basic_test.data == "success"
+
+# Users by default don't have this right, temporarily enable it
+- name: ensure the Users group have the SeBatchLogonRight
+  win_user_right:
+    name: SeBatchLogonRight
+    users:
+    - Users
+    action: add
+  register: batch_user_add
+
+- block:
+  - name: test Quantum.Become.cs
+    quantum_become_tests:
+    register: quantum_become_tests
+
+  always:
+  - name: remove SeBatchLogonRight from users if added in test
+    win_user_right:
+      name: SeBatchLogonRight
+      users:
+      - Users
+      action: remove
+    when: batch_user_add is changed
+
+- name: assert test Quantum.Become.cs
+  assert:
+    that:
+    - quantum_become_tests.data == "success"
+
+- name: test Quantum.Process.cs
+  quantum_process_tests:
+  register: quantum_process_tests
+
+- name: assert test Quantum.Process.cs
+  assert:
+    that:
+    - quantum_process_tests.data == "success"
+
+- name: test Quantum.Privilege.cs
+  quantum_privilege_tests:
+  register: quantum_privilege_test
+
+- name: assert test Quantum.Privilege.cs
+  assert:
+    that:
+    - quantum_privilege_test.data == "success"

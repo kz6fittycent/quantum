@@ -1,0 +1,7 @@
+[chroot]
+chroot-pipelining    quantum_ssh_pipelining=true
+chroot-no-pipelining quantum_ssh_pipelining=false
+[chroot:vars]
+quantum_host=/
+quantum_connection=chroot
+quantum_python_interpreter="{{ quantum_coupling_python }}"

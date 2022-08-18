@@ -1,0 +1,38 @@
+- when: vcsim is not defined
+  block:
+    - import_role:
+        name: prepare_vmware_tests
+      vars:
+        setup_attach_host: true
+    - name: get host facts through a vcenter
+      vmware_host_facts:
+        validate_certs: False
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        esxi_hostname: '{{ esxi1 }}'
+      register: facts
+    - debug: var=facts
+    - name: verify some data,like quantum_processor
+      assert:
+        that:
+          - "'quantum_hostname' in facts['quantum_facts']"
+          - "'quantum_processor' in facts['quantum_facts']"
+          - "'quantum_in_maintenance_mode' in facts['quantum_facts']"
+          - "'quantum_uptime' in facts['quantum_facts']"
+
+    - name: get host facts through from a host
+      vmware_host_facts:
+        validate_certs: False
+        hostname: '{{ esxi1 }}'
+        username: '{{ esxi_user }}'
+        password: '{{ esxi_password }}'
+      register: facts
+    - debug: var=facts
+    - name: verify some data,like quantum_processor
+      assert:
+        that:
+          - "'quantum_hostname' in facts['quantum_facts']"
+          - "'quantum_processor' in facts['quantum_facts']"
+          - "'quantum_in_maintenance_mode' in facts['quantum_facts']"
+          - "'quantum_uptime' in facts['quantum_facts']"

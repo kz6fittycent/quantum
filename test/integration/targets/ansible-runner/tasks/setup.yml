@@ -1,0 +1,19 @@
+- name: Install docutils
+  pip:
+    name: docutils
+
+- name: Install quantum-runner
+  pip:
+    name: quantum-runner
+    version: 1.2.0
+    extra_args:
+      -c {{ role_path }}/files/constraints.txt
+
+- name: Find location of quantum-runner installation
+  command: "'{{ quantum_python_interpreter }}' -c 'import os, quantum_runner; print(os.path.dirname(quantum_runner.__file__))'"
+  register: quantum_runner_path
+
+# work around for https://github.com/quantum/quantum-runner/issues/132
+- name: Set callback path to work around quantum-runner bug
+  set_fact:
+    callback_path: ":{{ quantum_runner_path.stdout }}/callbacks"

@@ -1,0 +1,2 @@
++ quantum-coupling -i inventory test.yml
+++ set +x
