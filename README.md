@@ -7,5 +7,6 @@ Quantum is a fork of Ansible
 - [ ] Add to stable branch
 - [ ] Publish binary
 - [ ] Get some help
+- [ ] Documentation!
 - [ ] Get some funding
 - [ ] Build a doc site
