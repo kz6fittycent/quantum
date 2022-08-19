@@ -1,0 +1,3 @@
+[testgroup]
+testhost quantum_connection=local  # no connection is actually established with this host
+localhost quantum_connection=local quantum_python_interpreter="{{ quantum_coupling_python }}"

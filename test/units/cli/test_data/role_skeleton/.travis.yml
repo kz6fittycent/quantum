@@ -1,0 +1,29 @@
+---
+language: python
+python: "2.7"
+
+# Use the new container infrastructure
+sudo: false
+
+# Install quantum
+addons:
+  apt:
+    packages:
+    - python-pip
+
+install:
+  # Install quantum
+  - pip install quantum
+
+  # Check quantum version
+  - quantum --version
+
+  # Create quantum.cfg with correct roles_path
+  - printf '[defaults]\nroles_path=../' >quantum.cfg
+
+script:
+  # Basic role syntax check
+  - quantum-coupling tests/test.yml -i tests/inventory --syntax-check
+
+notifications:
+  webhooks: https://fog.quantum.com/api/v1/notifications/

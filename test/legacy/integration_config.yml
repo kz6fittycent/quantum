@@ -1,0 +1,5 @@
+---
+win_output_dir: 'C:\quantum_testing'
+output_dir: ~/quantum_testing
+non_root_test_user: quantum
+pip_test_package: isort

@@ -1,0 +1,9 @@
+# ungrouped
+camel genus=camelus quantum_connection=local
+
+[lamini]
+alpaca genus=vicugna
+llama genus=lama
+
+[lamini:vars]
+quantum_connection=local

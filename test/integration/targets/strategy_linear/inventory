@@ -1,0 +1,3 @@
+[local]
+testhost quantum_connection=local
+testhost2 quantum_connection=local

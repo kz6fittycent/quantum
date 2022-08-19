@@ -1,0 +1,5 @@
+- hosts: localhost
+  connection: local
+  environment: "{{ quantum_test.environment }}"
+  roles:
+    - ec2_launch_template

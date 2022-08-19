@@ -1,0 +1,18 @@
+# This is the configuration template for quantum-test Tower integration tests.
+#
+# You do not need this template if you are:
+#
+# 1) Running integration tests without using quantum-test.
+# 2) Using the automatically provisioned Tower credentials in quantum-test.
+#
+# If you do not want to use the automatically provisioned temporary Tower credentials,
+# fill in the @VAR placeholders below and save this file without the .template extension.
+# This will cause quantum-test to use the given configuration instead of temporary credentials.
+#
+# NOTE: Automatic provisioning of Tower credentials requires an quantum-core-ci API key.
+
+[default]
+version=@VERSION
+host=@HOST
+username=@USERNAME
+password=@PASSWORD

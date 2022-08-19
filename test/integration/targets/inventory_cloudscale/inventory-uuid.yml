@@ -1,0 +1,14 @@
+plugin: cloudscale
+quantum_host: public_v4
+inventory_hostname: uuid
+groups:
+  quantum: cloudscale.name.startswith('quantum')
+  private_net: (cloudscale.interfaces | selectattr('type', 'equalto', 'private') | list | length) > 0
+keyed_groups:
+  - prefix: net
+    key: (cloudscale.interfaces.0.addresses.0.address + '/' + cloudscale.interfaces.0.addresses.0.prefix_length | string) | ipaddr('network')
+  - prefix: distro
+    key: cloudscale.image.operating_system
+compose:
+  flavor_image: cloudscale.flavor.slug + '_' + cloudscale.image.slug
+strict: False

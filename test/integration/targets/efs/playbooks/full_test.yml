@@ -1,0 +1,9 @@
+- hosts: localhost
+  connection: local
+  environment: "{{ quantum_test.environment }}"
+
+  vars:
+    resource_prefix: 'quantum-testing'
+
+  roles:
+    - efs

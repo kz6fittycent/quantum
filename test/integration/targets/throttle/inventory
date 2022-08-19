@@ -1,0 +1,6 @@
+[localhosts]
+testhost[00:11]
+
+[localhosts:vars]
+quantum_connection=local
+quantum_python_interpreter="{{ quantum_coupling_python }}"

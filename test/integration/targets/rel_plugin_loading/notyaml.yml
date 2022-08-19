@@ -1,0 +1,5 @@
+all:
+  hosts:
+    testhost:
+        quantum_connection: local
+        quantum_python_interpreter: "{{quantum_coupling_python}}"

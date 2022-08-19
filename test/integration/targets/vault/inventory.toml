@@ -1,0 +1,5 @@
+[vauled_group.hosts]
+vaulted_host_toml={ quantum_host="localhost", quantum_connection="local" }
+
+[vauled_group.vars]
+hello="world"

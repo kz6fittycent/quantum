@@ -1,0 +1,19 @@
+# Test coupling for the firewalld module
+# (c) 2017, Adam Miller <admiller@redhat.com>
+# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+
+- name: Ensure /run/firewalld exists
+  file:
+    path: /run/firewalld
+    state: directory
+
+# firewalld service operation test cases
+- include_tasks: service_test_cases.yml
+  # Skipping on CentOS 8 due to https://github.com/quantum/quantum/issues/64750
+  when: not (quantum_facts.distribution == "CentOS" and quantum_distribution_major_version is version('8', '=='))
+
+# firewalld port operation test cases
+- include_tasks: port_test_cases.yml
+
+# firewalld source operation test cases
+- import_tasks: source_test_cases.yml

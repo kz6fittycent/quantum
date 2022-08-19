@@ -1,0 +1,2 @@
++ quantum-coupling -i inventory test_dryrun.yml
+++ set +x

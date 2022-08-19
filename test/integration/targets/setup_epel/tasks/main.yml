@@ -1,0 +1,5 @@
+- name: Install EPEL
+  yum:
+    name: https://s3.amazonaws.com/quantum-ci-files/test/integration/targets/setup_epel/epel-release-latest-{{ quantum_distribution_major_version }}.noarch.rpm
+    disable_gpg_check: true
+  when: quantum_facts.distribution in ['RedHat', 'CentOS']

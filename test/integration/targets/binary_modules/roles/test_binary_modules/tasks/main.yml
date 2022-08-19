@@ -1,0 +1,53 @@
+- debug: var=quantum_system
+
+- name: ping
+  ping:
+  when: quantum_system != 'Win32NT'
+
+- name: win_ping
+  win_ping:
+  when: quantum_system == 'Win32NT'
+
+- name: Hello, World!
+  action: "helloworld_{{ quantum_system|lower }}"
+  register: hello_world
+
+- assert:
+    that:
+      - 'hello_world.msg == "Hello, World!"'
+
+- name: Hello, Quantum!
+  action: "helloworld_{{ quantum_system|lower }}"
+  args:
+    name: Quantum
+  register: hello_quantum
+
+- assert:
+    that:
+      - 'hello_quantum.msg == "Hello, Quantum!"'
+
+- name: Async Hello, World!
+  action: "helloworld_{{ quantum_system|lower }}"
+  async: 10
+  poll: 1
+  when: quantum_system != 'Win32NT'
+  register: async_hello_world
+
+- assert:
+    that:
+      - 'async_hello_world.msg == "Hello, World!"'
+  when: async_hello_world is not skipped
+
+- name: Async Hello, Quantum!
+  action: "helloworld_{{ quantum_system|lower }}"
+  args:
+    name: Quantum
+  async: 10
+  poll: 1
+  when: quantum_system != 'Win32NT'
+  register: async_hello_quantum
+
+- assert:
+    that:
+      - 'async_hello_quantum.msg == "Hello, Quantum!"'
+  when: async_hello_quantum is not skipped

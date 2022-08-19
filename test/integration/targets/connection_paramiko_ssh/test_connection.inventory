@@ -1,0 +1,7 @@
+[paramiko_ssh]
+paramiko_ssh-pipelining    quantum_ssh_pipelining=true
+paramiko_ssh-no-pipelining quantum_ssh_pipelining=false
+[paramiko_ssh:vars]
+quantum_host=localhost
+quantum_connection=paramiko_ssh
+quantum_python_interpreter="{{ quantum_coupling_python }}"

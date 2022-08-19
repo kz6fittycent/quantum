@@ -1,0 +1,4 @@
+etc/quantum
+etc/quantum/roles
+usr/lib/python2.7/dist-packages/quantum
+usr/share/quantum

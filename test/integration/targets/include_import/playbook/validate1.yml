@@ -1,0 +1,10 @@
+- hosts: testhost2
+
+  tasks:
+    - name: Assert that variable was set in coupling1.yml
+      assert:
+        that:
+          - canary_var1 == 'coupling1 imported'
+      tags:
+        - validate
+        - validate1

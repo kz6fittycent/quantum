@@ -1,0 +1,181 @@
+---
+- name: Remove users prior to tests
+  iosxr_config:
+    lines:
+      - no username quantum1
+      - no username quantum2
+      - no username quantum3
+    provider: "{{ cli }}"
+  connection: network_cli
+
+- name: Create user (SetUp)
+  iosxr_user:
+    name: quantum1
+    configured_password: password
+    state: present
+    provider: "{{ netconf }}"
+  connection: netconf
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == true'
+      - '"quantum1" in result.xml[0]'
+      - '"secret" in result.xml[0]'
+
+- name: Create user with update_password always (not idempotent)
+  iosxr_user:
+    name: quantum1
+    configured_password: password
+    update_password: always
+    state: present
+    provider: "{{ netconf }}"
+  connection: netconf
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == true'
+      - '"quantum1" in result.xml[0]'
+      - '"secret" in result.xml[0]'
+
+- name: Create user again with update_password on_create (idempotent)
+  iosxr_user:
+    name: quantum1
+    configured_password: password
+    update_password: on_create
+    state: present
+    provider: "{{ netconf }}"
+  connection: netconf
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == false'
+      - 'result.xml | length == 0'
+
+- name: Modify user group
+  iosxr_user:
+    name: quantum1
+    configured_password: password
+    update_password: on_create
+    group: sysadmin
+    state: present
+    provider: "{{ netconf }}"
+  connection: netconf
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == true'
+      - '"quantum1" in result.xml[0]'
+      - '"sysadmin" in result.xml[0]'
+
+- name: Modify user group again (idempotent)
+  iosxr_user:
+    name: quantum1
+    configured_password: password
+    update_password: on_create
+    group: sysadmin
+    state: present
+    provider: "{{ netconf }}"
+  connection: netconf
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == false'
+      - 'result.xml | length == 0'
+
+- name: Collection of users (SetUp)
+  iosxr_user:
+    aggregate:
+      - name: quantum2
+      - name: quantum3
+    configured_password: password
+    state: present
+    group: sysadmin
+    provider: "{{ netconf }}"
+  connection: netconf
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == true'
+      - '"quantum2" in result.xml[0]'
+      - '"secret" in result.xml[0]'
+      - '"sysadmin" in result.xml[1]'
+      - '"quantum2" in result.xml[0]'
+      - '"secret" in result.xml[0]'
+      - '"sysadmin" in result.xml[1]'
+
+- name: Add collection of users again with update_password always (not idempotent)
+  iosxr_user:
+    aggregate:
+      - name: quantum2
+      - name: quantum3
+    configured_password: password
+    state: present
+    group: sysadmin
+    provider: "{{ netconf }}"
+  connection: netconf
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == true'
+      - '"quantum2" in result.xml[0]'
+      - '"quantum3" in result.xml[0]'
+      - '"secret" in result.xml[0]'
+
+- name: Add collection of users again with update_password on_create (idempotent)
+  iosxr_user:
+    aggregate:
+      - name: quantum2
+      - name: quantum3
+    configured_password: password
+    update_password: on_create
+    state: present
+    group: sysadmin
+    provider: "{{ netconf }}"
+  connection: netconf
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == false'
+      - 'result.xml | length == 0'
+
+- name: Delete collection of users
+  iosxr_user:
+    aggregate:
+      - name: quantum1
+      - name: quantum2
+      - name: quantum3
+    state: absent
+    provider: "{{ netconf }}"
+  connection: netconf
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == true'
+      - '"quantum1" in result.xml[0]'
+      - '"quantum2" in result.xml[0]'
+      - '"quantum3" in result.xml[0]'
+
+- name: Delete collection of users again (idempotent)
+  iosxr_user:
+    aggregate:
+      - name: quantum1
+      - name: quantum2
+      - name: quantum3
+    state: absent
+    provider: "{{ netconf }}"
+  connection: netconf
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == false'
+      - 'result.xml | length == 0'

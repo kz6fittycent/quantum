@@ -1,0 +1,77 @@
+---
+- debug: msg="START cli/basic.yaml on connection={{ quantum_connection }}"
+
+- name: Setup
+  vyos_config:
+    lines:
+      - delete system login user quantumtest1
+      - delete system login user quantumtest2
+      - delete system login user quantumtest3
+
+- name: Create user
+  vyos_user:
+    name: quantumtest1
+    configured_password: test
+    state: present
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == true'
+      - '"set system login user" in result.commands[0]'
+      - '"authentication plaintext-password" in result.commands[0]'
+
+- name: Collection of users (SetUp)
+  vyos_user:
+    aggregate:
+      - name: quantumtest2
+      - name: quantumtest3
+    level: operator
+    state: present
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == true'
+      - 'result.commands == ["set system login user quantumtest2 level operator", "set system login user quantumtest3 level operator"]'
+
+- name: Add user again (Idempotent)
+  vyos_user:
+    name: quantumtest1
+    configured_password: test
+    state: present
+    update_password: on_create
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == false'
+      - 'result.commands | length == 0'
+
+- name: Add collection of users (Idempotent)
+  vyos_user:
+    aggregate:
+      - name: quantumtest2
+      - name: quantumtest3
+    level: operator
+    state: present
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == false'
+      - 'result.commands | length == 0'
+
+- name: tearDown
+  vyos_user:
+    users:
+      - name: quantumtest1
+      - name: quantumtest2
+      - name: quantumtest3
+    state: absent
+  register: result
+
+- assert:
+    that:
+      - 'result.changed == true'
+      - 'result.commands == ["delete system login user quantumtest1", "delete system login user quantumtest2", "delete system login user quantumtest3"]'

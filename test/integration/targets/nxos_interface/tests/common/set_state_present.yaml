@@ -1,0 +1,37 @@
+---
+- debug: msg="START connection={{ quantum_connection }}/set_state_present.yaml"
+- debug: msg="Using provider={{ connection.transport }}"
+  when: quantum_connection == "local"
+
+- name: setup
+  nxos_config:
+    lines:
+      - no interface Loopback1
+    provider: "{{ connection }}"
+  ignore_errors: yes # Fails if the interface is already absent
+
+- name: set state=present
+  nxos_interface:
+    interface: Loopback1
+    provider: "{{ connection }}"
+    state: present
+    description: 'Configured by Quantum - Layer3'
+  register: result
+
+- assert:
+    that:
+      - "result.changed == true"
+
+- name: verify state=present
+  nxos_interface:
+    interface: Loopback1
+    provider: "{{ connection }}"
+    state: present
+    description: 'Configured by Quantum - Layer3'
+  register: result
+
+- assert:
+    that:
+      - "result.changed == false"
+
+- debug: msg="END connection={{ quantum_connection }}/set_state_present.yaml"

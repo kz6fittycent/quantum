@@ -1,0 +1,38 @@
+---
+- debug: msg="START connection={{ quantum_connection }}/all_facts.yaml"
+- debug: msg="Using provider={{ connection.transport }}"
+  when: quantum_connection == "local"
+
+
+- name: test getting all facts
+  nxos_facts:
+    gather_subset:
+      - all
+    timeout: 60
+    provider: "{{ connection }}"
+  register: result
+
+
+
+- assert:
+    that:
+      # _facts modules should never report a change
+      - "result.changed == false"
+
+      # Correct subsets are present
+      - "'config' in result.quantum_facts.quantum_net_gather_subset"
+      - "'hardware' in result.quantum_facts.quantum_net_gather_subset"
+      - "'default' in result.quantum_facts.quantum_net_gather_subset"
+      - "'interfaces' in result.quantum_facts.quantum_net_gather_subset"
+
+      # Items from those subsets are present
+      - "result.quantum_facts.quantum_net_filesystems is defined"
+      - "result.quantum_facts.quantum_net_interfaces is defined"
+      - "result.quantum_facts.quantum_net_config is defined"
+      - "result.quantum_facts.quantum_net_model is defined"
+
+      # Check that these facts not only are present, but are valid (positive integers)
+      - "result.quantum_facts.quantum_net_memfree_mb > 1"
+      - "result.quantum_facts.quantum_net_memtotal_mb > 1"
+
+- debug: msg="END connection={{ quantum_connection }}/all_facts.yaml"

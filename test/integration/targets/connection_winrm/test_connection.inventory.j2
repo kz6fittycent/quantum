@@ -1,0 +1,10 @@
+[windows]
+{% for host in vars.groups.windows %}
+{{ host }}  quantum_host={{ hostvars[host]['quantum_host'] }} quantum_port={{ hostvars[host]['quantum_port'] }} quantum_user={{ hostvars[host]['quantum_user'] }} quantum_password={{ hostvars[host]['quantum_password'] }}
+{% endfor %}
+
+[windows:vars]
+quantum_connection=winrm
+# we don't know if we're using an encrypted connection or not, so we'll use message encryption
+quantum_winrm_transport=ntlm
+quantum_winrm_server_cert_validation=ignore

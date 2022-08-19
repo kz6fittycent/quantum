@@ -1,0 +1,387 @@
+{
+  "quantum_pipelining": false, 
+  "quantum_docker_extra_args": "", 
+  "quantum_scp_extra_args": "", 
+  "quantum_user": "root", 
+  "quantum_play_hosts": [
+    "el6host"
+  ], 
+  "quantum_connection": "smart", 
+  "quantum_ssh_common_args": "", 
+  "environment": [], 
+  "inventory_hostname": "el6host", 
+  "vars": {
+    "quantum_check_mode": false, 
+    "inventory_hostname": "el6host", 
+    "inventory_file": "inventory", 
+    "quantum_delegated_vars": {
+      "u1404": {
+        "inventory_hostname": "u1404", 
+        "inventory_file": "inventory", 
+        "vars": {
+          "inventory_file": "inventory", 
+          "role_names": [], 
+          "quantum_play_hosts": [
+            "el6host"
+          ], 
+          "groups": {
+            "ungrouped": [
+              "el6host", 
+              "u1404"
+            ], 
+            "all": [
+              "el6host", 
+              "u1404"
+            ]
+          }, 
+          "quantum_check_mode": false, 
+          "inventory_hostname": "u1404", 
+          "inventory_hostname_short": "u1404", 
+          "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+          "omit": "__omit_place_holder__32a8706cee222390e0d92197fb49cc967bfafb57", 
+          "inventory_dir": "/home/jtanner/workspace/issues/AP-15905", 
+          "environment": [], 
+          "quantum_ssh_user": "root", 
+          "group_names": [
+            "ungrouped"
+          ], 
+          "play_hosts": [
+            "el6host"
+          ], 
+          "quantum_version": {
+            "major": 2, 
+            "full": "2.2.0", 
+            "string": "2.2.0", 
+            "minor": 2, 
+            "revision": 0
+          }
+        }, 
+        "inventory_hostname_short": "u1404", 
+        "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+        "group_names": [
+          "ungrouped"
+        ], 
+        "inventory_dir": "/home/jtanner/workspace/issues/AP-15905", 
+        "omit": "__omit_place_holder__32a8706cee222390e0d92197fb49cc967bfafb57", 
+        "quantum_host": "u1404", 
+        "environment": [], 
+        "quantum_play_hosts": [
+          "el6host"
+        ], 
+        "groups": {
+          "ungrouped": [
+            "el6host", 
+            "u1404"
+          ], 
+          "all": [
+            "el6host", 
+            "u1404"
+          ]
+        }, 
+        "quantum_check_mode": false, 
+        "play_hosts": [
+          "el6host"
+        ], 
+        "role_names": [], 
+        "quantum_port": null, 
+        "quantum_version": {
+          "major": 2, 
+          "full": "2.2.0", 
+          "string": "2.2.0", 
+          "minor": 2, 
+          "revision": 0
+        }, 
+        "quantum_ssh_user": "root"
+      }
+    }, 
+    "inventory_hostname_short": "el6host", 
+    "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+    "role_names": [], 
+    "inventory_dir": "/home/jtanner/workspace/issues/AP-15905", 
+    "environment": [], 
+    "play_hosts": [
+      "el6host"
+    ], 
+    "quantum_play_hosts": [
+      "el6host"
+    ], 
+    "hostvars": {
+      "el6host": {
+        "inventory_file": "inventory", 
+        "group_names": [
+          "ungrouped"
+        ], 
+        "groups": {
+          "ungrouped": [
+            "el6host", 
+            "u1404", 
+            "::1"
+          ], 
+          "all": [
+            "el6host", 
+            "u1404", 
+            "::1"
+          ]
+        }, 
+        "inventory_hostname": "el6host", 
+        "inventory_hostname_short": "el6host", 
+        "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+        "omit": "__omit_place_holder__32a8706cee222390e0d92197fb49cc967bfafb57", 
+        "inventory_dir": "/home/jtanner/workspace/issues/AP-15905", 
+        "quantum_ssh_user": "root", 
+        "quantum_check_mode": false, 
+        "quantum_version": {
+          "major": 2, 
+          "full": "2.2.0", 
+          "string": "2.2.0", 
+          "minor": 2, 
+          "revision": 0
+        }
+      }, 
+      "u1404": {
+        "inventory_file": "inventory", 
+        "group_names": [
+          "ungrouped"
+        ], 
+        "groups": {
+          "ungrouped": [
+            "el6host", 
+            "u1404", 
+            "::1"
+          ], 
+          "all": [
+            "el6host", 
+            "u1404", 
+            "::1"
+          ]
+        }, 
+        "inventory_hostname": "u1404", 
+        "inventory_hostname_short": "u1404", 
+        "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+        "omit": "__omit_place_holder__32a8706cee222390e0d92197fb49cc967bfafb57", 
+        "inventory_dir": "/home/jtanner/workspace/issues/AP-15905", 
+        "quantum_ssh_user": "root", 
+        "quantum_check_mode": false, 
+        "quantum_version": {
+          "major": 2, 
+          "full": "2.2.0", 
+          "string": "2.2.0", 
+          "minor": 2, 
+          "revision": 0
+        }
+      }
+    }, 
+    "groups": {
+      "ungrouped": [
+        "el6host", 
+        "u1404"
+      ], 
+      "all": [
+        "el6host", 
+        "u1404"
+      ]
+    }, 
+    "group_names": [
+      "ungrouped"
+    ], 
+    "omit": "__omit_place_holder__32a8706cee222390e0d92197fb49cc967bfafb57", 
+    "quantum_version": {
+      "major": 2, 
+      "full": "2.2.0", 
+      "string": "2.2.0", 
+      "minor": 2, 
+      "revision": 0
+    }, 
+    "quantum_ssh_user": "root"
+  }, 
+  "quantum_accelerate_port": 5099, 
+  "roledir": null, 
+  "quantum_ssh_extra_args": "", 
+  "quantum_ssh_host": "u1404", 
+  "quantum_current_hosts": [
+    "el6host"
+  ], 
+  "hostvars": {
+    "el6host": {
+      "inventory_file": "inventory", 
+      "group_names": [
+        "ungrouped"
+      ], 
+      "groups": {
+        "ungrouped": [
+          "el6host", 
+          "u1404", 
+          "::1"
+        ], 
+        "all": [
+          "el6host", 
+          "u1404", 
+          "::1"
+        ]
+      }, 
+      "inventory_hostname": "el6host", 
+      "inventory_hostname_short": "el6host", 
+      "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+      "omit": "__omit_place_holder__32a8706cee222390e0d92197fb49cc967bfafb57", 
+      "inventory_dir": "/home/jtanner/workspace/issues/AP-15905", 
+      "quantum_ssh_user": "root", 
+      "quantum_check_mode": false, 
+      "quantum_version": {
+        "major": 2, 
+        "full": "2.2.0", 
+        "string": "2.2.0", 
+        "minor": 2, 
+        "revision": 0
+      }
+    }, 
+    "u1404": {
+      "inventory_file": "inventory", 
+      "group_names": [
+        "ungrouped"
+      ], 
+      "groups": {
+        "ungrouped": [
+          "el6host", 
+          "u1404", 
+          "::1"
+        ], 
+        "all": [
+          "el6host", 
+          "u1404", 
+          "::1"
+        ]
+      }, 
+      "inventory_hostname": "u1404", 
+      "inventory_hostname_short": "u1404", 
+      "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+      "omit": "__omit_place_holder__32a8706cee222390e0d92197fb49cc967bfafb57", 
+      "inventory_dir": "/home/jtanner/workspace/issues/AP-15905", 
+      "quantum_ssh_user": "root", 
+      "quantum_check_mode": false, 
+      "quantum_version": {
+        "major": 2, 
+        "full": "2.2.0", 
+        "string": "2.2.0", 
+        "minor": 2, 
+        "revision": 0
+      }
+    }
+  }, 
+  "group_names": [
+    "ungrouped"
+  ], 
+  "quantum_version": {
+    "major": 2, 
+    "full": "2.2.0", 
+    "string": "2.2.0", 
+    "minor": 2, 
+    "revision": 0
+  }, 
+  "quantum_ssh_pipelining": false, 
+  "inventory_file": "inventory", 
+  "quantum_delegated_vars": {
+    "u1404": {
+      "inventory_hostname": "u1404", 
+      "inventory_file": "inventory", 
+      "vars": {
+        "quantum_check_mode": false, 
+        "inventory_hostname": "u1404", 
+        "inventory_file": "inventory", 
+        "inventory_hostname_short": "u1404", 
+        "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+        "omit": "__omit_place_holder__32a8706cee222390e0d92197fb49cc967bfafb57", 
+        "inventory_dir": "/home/jtanner/workspace/issues/AP-15905", 
+        "environment": [], 
+        "quantum_ssh_user": "root", 
+        "quantum_play_hosts": [
+          "el6host"
+        ], 
+        "groups": {
+          "ungrouped": [
+            "el6host", 
+            "u1404"
+          ], 
+          "all": [
+            "el6host", 
+            "u1404"
+          ]
+        }, 
+        "group_names": [
+          "ungrouped"
+        ], 
+        "play_hosts": [
+          "el6host"
+        ], 
+        "quantum_version": {
+          "major": 2, 
+          "full": "2.2.0", 
+          "string": "2.2.0", 
+          "minor": 2, 
+          "revision": 0
+        }, 
+        "role_names": []
+      }, 
+      "inventory_hostname_short": "u1404", 
+      "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+      "group_names": [
+        "ungrouped"
+      ], 
+      "inventory_dir": "/home/jtanner/workspace/issues/AP-15905", 
+      "omit": "__omit_place_holder__32a8706cee222390e0d92197fb49cc967bfafb57", 
+      "quantum_host": "u1404", 
+      "environment": [], 
+      "quantum_play_hosts": [
+        "el6host"
+      ], 
+      "groups": {
+        "ungrouped": [
+          "el6host", 
+          "u1404"
+        ], 
+        "all": [
+          "el6host", 
+          "u1404"
+        ]
+      }, 
+      "quantum_check_mode": false, 
+      "play_hosts": [
+        "el6host"
+      ], 
+      "role_names": [], 
+      "quantum_port": null, 
+      "quantum_version": {
+        "major": 2, 
+        "full": "2.2.0", 
+        "string": "2.2.0", 
+        "minor": 2, 
+        "revision": 0
+      }, 
+      "quantum_ssh_user": "root"
+    }
+  }, 
+  "quantum_module_compression": "ZIP_DEFLATED", 
+  "quantum_failed_hosts": [], 
+  "quantum_check_mode": false, 
+  "groups": {
+    "ungrouped": [
+      "el6host", 
+      "u1404"
+    ], 
+    "all": [
+      "el6host", 
+      "u1404"
+    ]
+  }, 
+  "quantum_host": "u1404", 
+  "quantum_shell_executable": "/bin/sh", 
+  "inventory_hostname_short": "el6host", 
+  "omit": "__omit_place_holder__32a8706cee222390e0d92197fb49cc967bfafb57", 
+  "inventory_dir": "/home/jtanner/workspace/issues/AP-15905", 
+  "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+  "quantum_ssh_user": "root", 
+  "role_names": [], 
+  "play_hosts": [
+    "el6host"
+  ], 
+  "quantum_sftp_extra_args": ""
+}

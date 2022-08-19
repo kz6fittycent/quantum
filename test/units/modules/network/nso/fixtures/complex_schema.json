@@ -1,0 +1,212 @@
+{
+  "meta": {
+    "prefix": "quantum",
+    "namespace": "http://example.com/quantum",
+    "types": {
+    },
+    "keypath": "/quantum:action/complex"
+  },
+  "data": {
+    "kind": "action",
+    "mandatory": true,
+    "name": "complex",
+    "qname": "quantum:complex",
+    "access": {
+      "read": false,
+      "create": false,
+      "execute": true,
+      "update": false,
+      "delete": false
+    },
+    "children": [
+      {
+        "kind": "leaf",
+        "is_action_input": true,
+        "name": "number",
+        "qname": "quantum:number",
+        "access": {
+          "read": false,
+          "create": false,
+          "execute": false,
+          "update": true,
+          "delete": false
+        },
+        "type": {
+          "primitive": true,
+          "name": "uint8"
+        }
+      },
+      {
+        "kind": "container",
+        "is_action_input": true,
+        "mandatory": true,
+        "name": "quantum",
+        "qname": "quantum:quantum",
+        "access": {
+          "read": false,
+          "create": false,
+          "execute": false,
+          "update": true,
+          "delete": false
+        },
+        "children": [
+          {
+            "kind": "choice",
+            "cases": [
+              {
+                "kind": "case",
+                "name": "version",
+                "children": [
+                  {
+                    "kind": "leaf",
+                    "is_action_input": true,
+                    "name": "version",
+                    "qname": "quantum:version",
+                    "access": {
+                      "read": false,
+                      "create": false,
+                      "execute": false,
+                      "update": true,
+                      "delete": false
+                    },
+                    "type": {
+                      "primitive": true,
+                      "name": "string"
+                    }
+                  }
+                ]
+              },
+              {
+                "kind": "case",
+                "name": "release",
+                "children": [
+                  {
+                    "kind": "container",
+                    "is_action_input": true,
+                    "mandatory": true,
+                    "name": "release",
+                    "qname": "quantum:release",
+                    "access": {
+                      "read": false,
+                      "create": false,
+                      "execute": false,
+                      "update": true,
+                      "delete": false
+                    },
+                    "children": [
+                      {
+                        "kind": "leaf",
+                        "is_action_input": true,
+                        "name": "major",
+                        "qname": "quantum:major",
+                        "access": {
+                          "read": false,
+                          "create": false,
+                          "execute": false,
+                          "update": true,
+                          "delete": false
+                        },
+                        "type": {
+                          "primitive": true,
+                          "name": "uint8"
+                        }
+                      },
+                      {
+                        "kind": "leaf",
+                        "is_action_input": true,
+                        "name": "minor",
+                        "qname": "quantum:minor",
+                        "access": {
+                          "read": false,
+                          "create": false,
+                          "execute": false,
+                          "update": true,
+                          "delete": false
+                        },
+                        "type": {
+                          "primitive": true,
+                          "name": "uint8"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "name": "version-releae-choice"
+          }
+        ]
+      },
+      {
+        "kind": "choice",
+        "cases": [
+          {
+            "kind": "case",
+            "name": "version",
+            "children": [
+              {
+                "kind": "list",
+                "min_elements": 0,
+                "name": "version",
+                "max_elements": "unbounded",
+                "qname": "quantum:version",
+                "access": {
+                  "read": false,
+                  "create": false,
+                  "execute": false,
+                  "update": false,
+                  "delete": false
+                },
+                "mandatory": true,
+                "children": [
+                  {
+                    "kind": "leaf",
+                    "name": "name",
+                    "qname": "quantum:name",
+                    "access": {
+                      "read": false,
+                      "create": false,
+                      "execute": false,
+                      "update": false,
+                      "delete": false
+                    },
+                    "type": {
+                      "primitive": true,
+                      "name": "string"
+                    },
+                    "is_action_output": true
+                  }
+                ],
+                "is_action_output": true
+              }
+            ]
+          },
+          {
+            "kind": "case",
+            "name": "release",
+            "children": [
+              {
+                "kind": "leaf",
+                "name": "release",
+                "qname": "quantum:release",
+                "access": {
+                  "read": false,
+                  "create": false,
+                  "execute": false,
+                  "update": false,
+                  "delete": false
+                },
+                "type": {
+                  "primitive": true,
+                  "name": "string"
+                },
+                "is_action_output": true
+              }
+            ]
+          }
+        ],
+        "name": "version-release-choice"
+      }
+    ]
+  }
+}

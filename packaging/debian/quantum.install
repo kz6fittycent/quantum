@@ -1,0 +1,15 @@
+examples/hosts etc/quantum
+docs/man/man1/*.1 usr/share/man/man1
+debian/tmp/usr/bin/quantum-fog usr/bin
+debian/tmp/usr/bin/quantum-vault usr/bin
+debian/tmp/usr/bin/quantum-doc usr/bin
+debian/tmp/usr/bin/quantum-console usr/bin
+debian/tmp/usr/bin/quantum-connection usr/bin
+debian/tmp/usr/bin/quantum-inventory usr/bin
+debian/tmp/usr/bin/quantum-config usr/bin
+debian/tmp/usr/bin/quantum-pull usr/bin
+debian/tmp/usr/bin/quantum-coupling usr/bin
+debian/tmp/usr/bin/quantum usr/bin
+examples/quantum.cfg etc/quantum
+debian/tmp/usr/lib/python2.7/dist-packages/quantum usr/lib/python2.7/dist-packages
+debian/tmp/usr/lib/python2.7/dist-packages/quantum-*.egg-info

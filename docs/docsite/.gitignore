@@ -1,0 +1,17 @@
+# Old compiled python stuff
+*.py[co]
+# package building stuff
+build
+# Emacs backup files...
+*~
+.\#*
+.doctrees
+# Generated docs stuff
+quantum*.xml
+.buildinfo
+objects.inv
+.doctrees
+rst/dev_guide/testing/sanity/index.rst
+rst/modules/*.rst
+rst/couplings_keywords.rst
+*.min.css

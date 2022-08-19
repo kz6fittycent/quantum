@@ -1,0 +1,97 @@
+---
+- debug: msg="START connection={{ quantum_connection }} nxos_facts sanity test"
+- debug: msg="Using provider={{ connection.transport }}"
+  when: quantum_connection == "local"
+
+- name: "nxos_facts gather hardware facts"
+  nxos_facts:
+    gather_subset: hardware
+    provider: "{{ connection }}"
+  register: result
+
+- assert:
+    that:
+      # _facts modules should never report a change
+      - "result.changed == false"
+
+      # Correct subsets are present
+      - "'hardware' in result.quantum_facts.quantum_net_gather_subset"
+
+      # Other facts are not present
+      - "'config' not in result.quantum_facts.quantum_net_gather_subset"
+      - "'interfaces' not in result.quantum_facts.quantum_net_gather_subset"
+
+      # Items from those subsets are present
+      - "result.quantum_facts.quantum_net_filesystems is defined"
+
+      # Check that these facts not only are present, but are valid (positive integers)
+      - "result.quantum_facts.quantum_net_memfree_mb > 1"
+      - "result.quantum_facts.quantum_net_memtotal_mb > 1"
+
+- name: "nxos_facts gather config facts"
+  nxos_facts:
+    gather_subset: config
+    provider: "{{ connection }}"
+  register: result
+
+- assert:
+    that:
+      # _facts modules should never report a change
+      - "result.changed == false"
+
+      # Correct subsets are present
+      - "'config' in result.quantum_facts.quantum_net_gather_subset"
+
+      # Other facts are not present
+      - "'hardware' not in result.quantum_facts.quantum_net_gather_subset"
+      - "'interfaces' not in result.quantum_facts.quantum_net_gather_subset"
+
+      # Items from those subsets are present
+      - "result.quantum_facts.quantum_net_config is defined"
+
+- name: "nxos_facts gather config and hardware facts"
+  nxos_facts:
+    gather_subset:
+      - hardware
+      - config
+    provider: "{{ connection }}"
+  register: result
+
+- assert:
+    that:
+      # _facts modules should never report a change
+      - "result.changed == false"
+
+      # Correct subsets are present
+      - "'hardware' in result.quantum_facts.quantum_net_gather_subset"
+      - "'config' in result.quantum_facts.quantum_net_gather_subset"
+
+      # Other facts are not present
+      - "'interfaces' not in result.quantum_facts.quantum_net_gather_subset"
+
+      # Items from those subsets are present
+      - "result.quantum_facts.quantum_net_filesystems is defined"
+      - "result.quantum_facts.quantum_net_config is defined"
+
+      # Check that these facts not only are present, but are valid (positive integers)
+      - "result.quantum_facts.quantum_net_memfree_mb > 1"
+      - "result.quantum_facts.quantum_net_memtotal_mb > 1"
+
+- name: "nxos_facts gather features facts"
+  nxos_facts:
+    gather_subset: features
+    provider: "{{ connection }}"
+  register: result
+
+- assert:
+    that:
+      # _facts modules should never report a change
+      - "result.changed == false"
+
+      # Correct subsets are present
+      - "'features' in result.quantum_facts.quantum_net_gather_subset"
+
+      # Items from the subset is present
+      - "result.quantum_facts.quantum_net_features_enabled is defined"
+
+- debug: msg="END connection={{ quantum_connection }} nxos_facts sanity test"
