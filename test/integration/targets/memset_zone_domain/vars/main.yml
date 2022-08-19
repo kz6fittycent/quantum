@@ -1,0 +1,4 @@
+---
+test_domain: quantum.example.com
+target_zone: quantum-dns-zone
+duplicate_zone: quantum-dns-zone-dupe

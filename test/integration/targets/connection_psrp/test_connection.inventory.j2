@@ -1,0 +1,9 @@
+[windows]
+{% for host in vars.groups.windows %}
+{{ host }}  quantum_host={{ hostvars[host]['quantum_host'] }} quantum_port={{ hostvars[host]['quantum_port'] }} quantum_user={{ hostvars[host]['quantum_user'] }} quantum_password={{ hostvars[host]['quantum_password'] }}
+{% endfor %}
+
+[windows:vars]
+quantum_connection=psrp
+quantum_psrp_auth=negotiate
+quantum_psrp_cert_validation=ignore

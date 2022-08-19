@@ -1,0 +1,9 @@
+- name: assert quantum_loop variables in include_tasks
+  assert:
+    that:
+      - quantum_loop.index == quantum_loop.index0 + 1
+      - quantum_loop.revindex == quantum_loop.revindex0 + 1
+      - quantum_loop.first == {{ quantum_loop.index == 1 }}
+      - quantum_loop.last == {{ quantum_loop.index == quantum_loop.length }}
+      - quantum_loop.length == 3
+      - quantum_loop.allitems|join(',') == 'first,second,third'

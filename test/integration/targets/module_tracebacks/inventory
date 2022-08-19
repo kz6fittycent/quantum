@@ -1,0 +1,5 @@
+testhost_local quantum_connection=local
+testhost_ssh   quantum_connection=ssh   quantum_host=localhost
+
+[all:vars]
+quantum_python_interpreter="{{ quantum_coupling_python }}"

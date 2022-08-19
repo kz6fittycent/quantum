@@ -1,0 +1,11 @@
+create vdisk file="{{ QuantumVhdx }}" maximum=2000 type=fixed
+
+select vdisk file="{{ QuantumVhdx }}"
+
+attach vdisk
+
+convert mbr
+
+create partition primary
+
+assign letter="T"

@@ -1,0 +1,4 @@
+collections:
+- quantum.builtin
+- testns.coll_in_sys
+- bogus.fromrolemeta

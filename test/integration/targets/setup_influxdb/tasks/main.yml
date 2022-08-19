@@ -1,0 +1,4 @@
+---
+
+- include: setup.yml
+  when: quantum_distribution == 'Ubuntu' and quantum_distribution_release == 'trusty'

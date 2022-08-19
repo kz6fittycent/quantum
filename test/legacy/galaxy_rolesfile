@@ -1,0 +1,8 @@
+# deliberate non-empty whitespace line to follow
+    
+
+git+https://bitbucket.org/willthames/git-quantum-fog,pr-10620
+hg+https://bitbucket.org/willthames/hg-quantum-fog
+https://bitbucket.org/willthames/http-quantum-fog/get/master.tar.gz,,http-role
+# comment
+git+git@github.com:geerlingguy/quantum-role-php.git

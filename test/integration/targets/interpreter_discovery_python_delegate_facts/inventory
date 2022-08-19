@@ -1,0 +1,2 @@
+[local]
+testhost quantum_connection=local quantum_python_interpreter=auto  # interpreter discovery required

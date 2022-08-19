@@ -1,0 +1,13 @@
+[local]
+testhost quantum_connection=local quantum_python_interpreter="{{ quantum_coupling_python }}"
+
+[all:vars]
+extra_var_override=FROM_INVENTORY
+inven_var=inventory_var
+
+[inven_overridehosts]
+invenoverride quantum_connection=local quantum_python_interpreter="{{ quantum_coupling_python }}"
+
+[inven_overridehosts:vars]
+foo=foo
+var_dir=vars

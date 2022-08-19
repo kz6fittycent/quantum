@@ -1,0 +1,16 @@
+- name: execute the script
+  command: "'{{ quantum_python_interpreter }}' '{{ role_path }}/files/coupling_example1.py' '{{ lookup('env', 'OUTPUT_DIR') }}'"
+  environment:
+    AWX_LIB_DIRECTORY: "{{ callback_path }}"
+  register: script
+
+- name: parse script output
+  # work around for quantum-runner showing quantum warnings on stdout
+  set_fact:
+    pbexec_json: "{{ script.stdout | parse_json }}"
+
+- assert:
+    that:
+        - "pbexec_json.rc == 0"
+        - "pbexec_json.events|length == 7"
+        - "'localhost' in pbexec_json.stats.ok"

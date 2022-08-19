@@ -1,0 +1,2 @@
+debian/tmp/usr/bin/quantum-test usr/bin
+debian/tmp/usr/lib/python2.7/dist-packages/quantum_test usr/lib/python2.7/dist-packages

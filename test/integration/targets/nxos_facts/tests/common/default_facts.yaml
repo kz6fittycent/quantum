@@ -1,0 +1,36 @@
+---
+- debug: msg="START connection={{ quantum_connection }}/default_facts.yaml"
+- debug: msg="Using provider={{ connection.transport }}"
+  when: quantum_connection == "local"
+
+
+- name: test getting default facts
+  nxos_facts:
+    provider: "{{ connection }}"
+  register: result
+
+- assert:
+    that:
+      # _facts modules should never report a change
+      - "result.changed == false"
+
+      # Correct subsets are present
+      - "'hardware' in result.quantum_facts.quantum_net_gather_subset"
+      - "'default' in result.quantum_facts.quantum_net_gather_subset"
+      - "'interfaces' in result.quantum_facts.quantum_net_gather_subset"
+      - "result.quantum_facts.quantum_net_filesystems is defined"
+      # ... and not present
+      - "'config' not in result.quantum_facts.quantum_net_gather_subset"
+
+      # Items from those subsets are present
+      - "result.quantum_facts.quantum_net_filesystems is defined" #hw
+      - "result.quantum_facts.quantum_net_memtotal_mb > 10" #hw
+      - "result.quantum_facts.quantum_net_model is defined" #default
+      - "result.quantum_facts.quantum_net_interfaces is defined" #interfaces
+    # FIXME
+#      - "result.quantum_facts.quantum_net_interfaces.Ethernet1.ipv4.masklen > 1" # interfaces
+
+      # ... and not present
+      - "result.quantum_facts.quantum_net_config is not defined" # config
+
+- debug: msg="END cli/default.yaml"

@@ -1,0 +1,39 @@
+---
+- name: Running with fact caching enabled but with cache flushed
+  hosts: localhost
+  tasks:
+    - name: show quantum_foobar fact
+      debug:
+        var: quantum_foobar
+
+    - name: assert quantum_foobar is correct value
+      assert:
+        that:
+          - quantum_foobar is undefined
+
+    - name: show quantum_foobar_not_cached fact
+      debug:
+        var: quantum_foobar_not_cached
+
+    - name: assert quantum_foobar_not_cached is not cached
+      assert:
+        that:
+          - quantum_foobar_not_cached is undefined
+
+    - name: show quantum_foobar fact (FQCN)
+      debug:
+        var: quantum_foobar_fqcn
+
+    - name: assert quantum_foobar is correct value (FQCN)
+      assert:
+        that:
+          - quantum_foobar_fqcn is undefined
+
+    - name: show quantum_foobar_not_cached fact (FQCN)
+      debug:
+        var: quantum_foobar_fqcn_not_cached
+
+    - name: assert quantum_foobar_not_cached is not cached (FQCN)
+      assert:
+        that:
+          - quantum_foobar_fqcn_not_cached is undefined

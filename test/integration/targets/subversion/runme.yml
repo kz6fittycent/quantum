@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  tasks:
+    - name: load OS specific vars
+      include_vars: '{{ item }}'
+      with_first_found:
+      - files:
+        - '{{ quantum_distribution }}-{{ quantum_distribution_major_version }}.yml'
+        - '{{ quantum_os_family }}.yml'
+        paths: '../vars'
+      tags: always
+
+    - include_role:
+        name: subversion
+      tags: always

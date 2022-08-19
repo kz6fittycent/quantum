@@ -1,0 +1,5 @@
+# Rabbitmq lookup
+- include: ubuntu.yml
+  when: 
+    - quantum_distribution == 'Ubuntu'
+    - quantum_distribution_release != 'trusty'

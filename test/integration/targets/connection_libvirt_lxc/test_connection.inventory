@@ -1,0 +1,6 @@
+[libvirt_lxc]
+libvirt_lxc-pipelining    quantum_ssh_pipelining=true
+libvirt_lxc-no-pipelining quantum_ssh_pipelining=false
+[libvirt_lxc:vars]
+quantum_host=lv-ubuntu-wily-amd64
+quantum_connection=libvirt_lxc

@@ -1,0 +1,11 @@
+[Unit]
+Description=Quantum Test Service
+
+[Service]
+ExecStart=/usr/sbin/quantum_test_service "Test\nthat newlines in scripts\nwork"
+ExecReload=/bin/true
+Type=forking
+PIDFile=/var/run/quantum_test_service.pid
+
+[Install]
+WantedBy=multi-user.target

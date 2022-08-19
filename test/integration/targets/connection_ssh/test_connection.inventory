@@ -1,0 +1,7 @@
+[ssh]
+ssh-pipelining    quantum_ssh_pipelining=true
+ssh-no-pipelining quantum_ssh_pipelining=false
+[ssh:vars]
+quantum_host=localhost
+quantum_connection=ssh
+quantum_python_interpreter="{{ quantum_coupling_python }}"

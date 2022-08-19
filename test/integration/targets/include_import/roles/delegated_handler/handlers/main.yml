@@ -1,0 +1,4 @@
+- name: delegated assert handler
+  assert:
+    that:
+      - quantum_delegated_vars is defined

@@ -1,0 +1,9 @@
+.. note::
+   **LICENSING REQUIREMENTS**  Quantum enforces the following licensing requirements:
+
+   * Utilities (files in ``lib/quantum/module_utils/``) may have one of two licenses:
+      * A file in ``module_utils`` used **only** for a specific vendor's hardware, provider, or service may be licensed under GPLv3+.
+        Adding a new file under ``module_utils`` with GPLv3+ needs to be approved by the core team.
+      * All other ``module_utils`` must be licensed under BSD, so GPL-licensed third-party and Galaxy modules can use them.
+      * If there's doubt about the appropriate license for a file in ``module_utils``, the Quantum Core Team will decide during an Quantum Core Community Meeting.
+   * All other files shipped with Quantum, including all modules, must be licensed under the GPL license (GPLv3 or later).

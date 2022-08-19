@@ -1,0 +1,164 @@
+{
+  "quantum_pipelining": false, 
+  "quantum_docker_extra_args": "", 
+  "quantum_scp_extra_args": "", 
+  "quantum_user": "vagrant", 
+  "quantum_play_hosts": [
+    "default"
+  ], 
+  "quantum_connection": "ssh", 
+  "quantum_ssh_common_args": "", 
+  "quantum_ssh_host": "127.0.0.1", 
+  "inventory_hostname": "default", 
+  "quantum_ssh_private_key_file": "/home/jtanner/workspace/issues/AP-15905/.vagrant/machines/default/virtualbox/private_key", 
+  "vars": {
+    "quantum_check_mode": false, 
+    "environment": [], 
+    "inventory_hostname": "default", 
+    "inventory_file": null, 
+    "quantum_ssh_private_key_file": "/home/jtanner/workspace/issues/AP-15905/.vagrant/machines/default/virtualbox/private_key", 
+    "inventory_hostname_short": "default", 
+    "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+    "role_names": [], 
+    "inventory_dir": "/home/jtanner/workspace/issues/AP-15905/.vagrant/provisioners/quantum/inventory", 
+    "quantum_ssh_host": "127.0.0.1", 
+    "play_hosts": [
+      "default"
+    ], 
+    "quantum_play_hosts": [
+      "default"
+    ], 
+    "hostvars": {
+      "default": {
+        "inventory_file": null, 
+        "quantum_check_mode": false, 
+        "groups": {
+          "ungrouped": [
+            "default"
+          ], 
+          "all": [
+            "default"
+          ]
+        }, 
+        "quantum_ssh_port": 2202, 
+        "inventory_hostname": "default", 
+        "quantum_ssh_private_key_file": "/home/jtanner/workspace/issues/AP-15905/.vagrant/machines/default/virtualbox/private_key", 
+        "inventory_hostname_short": "default", 
+        "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+        "omit": "__omit_place_holder__c360b80aa60ddd99087425dcd3a2094cdd5b8474", 
+        "inventory_dir": "/home/jtanner/workspace/issues/AP-15905/.vagrant/provisioners/quantum/inventory", 
+        "quantum_ssh_host": "127.0.0.1", 
+        "quantum_ssh_user": "vagrant", 
+        "group_names": [
+          "ungrouped"
+        ], 
+        "quantum_version": {
+          "major": 2, 
+          "full": "2.2.0", 
+          "string": "2.2.0", 
+          "minor": 2, 
+          "revision": 0
+        }
+      }
+    }, 
+    "groups": {
+      "ungrouped": [
+        "default"
+      ], 
+      "all": [
+        "default"
+      ]
+    }, 
+    "group_names": [
+      "ungrouped"
+    ], 
+    "omit": "__omit_place_holder__c360b80aa60ddd99087425dcd3a2094cdd5b8474", 
+    "quantum_ssh_port": 2202, 
+    "quantum_version": {
+      "major": 2, 
+      "full": "2.2.0", 
+      "string": "2.2.0", 
+      "minor": 2, 
+      "revision": 0
+    }, 
+    "quantum_ssh_user": "vagrant"
+  }, 
+  "quantum_accelerate_port": 5099, 
+  "roledir": null, 
+  "quantum_ssh_extra_args": "", 
+  "environment": [], 
+  "quantum_current_hosts": [
+    "default"
+  ], 
+  "hostvars": {
+    "default": {
+      "inventory_file": null, 
+      "quantum_check_mode": false, 
+      "groups": {
+        "ungrouped": [
+          "default"
+        ], 
+        "all": [
+          "default"
+        ]
+      }, 
+      "quantum_ssh_port": 2202, 
+      "inventory_hostname": "default", 
+      "quantum_ssh_private_key_file": "/home/jtanner/workspace/issues/AP-15905/.vagrant/machines/default/virtualbox/private_key", 
+      "inventory_hostname_short": "default", 
+      "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+      "omit": "__omit_place_holder__c360b80aa60ddd99087425dcd3a2094cdd5b8474", 
+      "inventory_dir": "/home/jtanner/workspace/issues/AP-15905/.vagrant/provisioners/quantum/inventory", 
+      "quantum_ssh_host": "127.0.0.1", 
+      "quantum_ssh_user": "vagrant", 
+      "group_names": [
+        "ungrouped"
+      ], 
+      "quantum_version": {
+        "major": 2, 
+        "full": "2.2.0", 
+        "string": "2.2.0", 
+        "minor": 2, 
+        "revision": 0
+      }
+    }
+  }, 
+  "group_names": [
+    "ungrouped"
+  ], 
+  "quantum_version": {
+    "major": 2, 
+    "full": "2.2.0", 
+    "string": "2.2.0", 
+    "minor": 2, 
+    "revision": 0
+  }, 
+  "quantum_ssh_pipelining": false, 
+  "inventory_file": null, 
+  "quantum_module_compression": "ZIP_DEFLATED", 
+  "quantum_failed_hosts": [], 
+  "quantum_check_mode": false, 
+  "quantum_port": 2202, 
+  "quantum_private_key_file": "/home/jtanner/workspace/issues/AP-15905/.vagrant/machines/default/virtualbox/private_key", 
+  "groups": {
+    "ungrouped": [
+      "default"
+    ], 
+    "all": [
+      "default"
+    ]
+  }, 
+  "quantum_ssh_port": 2202, 
+  "quantum_host": "127.0.0.1", 
+  "quantum_shell_executable": "/bin/sh", 
+  "inventory_hostname_short": "default", 
+  "omit": "__omit_place_holder__c360b80aa60ddd99087425dcd3a2094cdd5b8474", 
+  "inventory_dir": "/home/jtanner/workspace/issues/AP-15905/.vagrant/provisioners/quantum/inventory", 
+  "coupling_dir": "/home/jtanner/workspace/issues/AP-15905", 
+  "quantum_ssh_user": "vagrant", 
+  "role_names": [], 
+  "play_hosts": [
+    "default"
+  ], 
+  "quantum_sftp_extra_args": ""
+}

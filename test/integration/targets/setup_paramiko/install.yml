@@ -1,0 +1,17 @@
+- hosts: localhost
+  tasks:
+    - name: Detect Paramiko
+      detect_paramiko:
+      register: detect_paramiko
+    - name: Persist Result
+      copy:
+        content: "{{ detect_paramiko }}"
+        dest: "{{ lookup('env', 'OUTPUT_DIR') }}/detect-paramiko.json"
+    - name: Install Paramiko
+      when: not detect_paramiko.found
+      include_tasks: "{{ item }}"
+      with_first_found:
+        - "install-{{ quantum_distribution }}-{{ quantum_distribution_major_version }}-python-{{ quantum_python.version.major }}.yml"
+        - "install-{{ quantum_os_family }}-{{ quantum_distribution_major_version }}-python-{{ quantum_python.version.major }}.yml"
+        - "install-python-{{ quantum_python.version.major }}.yml"
+        - "install-fail.yml"

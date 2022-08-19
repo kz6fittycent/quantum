@@ -1,0 +1,11 @@
+- hosts: testhost2
+
+  tasks:
+    - name: Assert that coupling3.yml and coupling4.yml were imported
+      assert:
+        that:
+          - canary_var3 == 'coupling3 imported'
+          - canary_var4 == 'coupling4 imported'
+      tags:
+        - validate
+        - validate34

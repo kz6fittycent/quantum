@@ -1,0 +1,69 @@
+---
+- name: ensure Chocolatey is installed
+  win_chocolatey:
+    name: chocolatey
+    state: present
+
+- name: create test source
+  win_chocolatey_source:
+    name: test|repo  # use a pipe as that's a delimiter with Chocolatey, test edge case
+    state: disabled
+    admin_only: yes
+    allow_self_service: yes
+    bypass_proxy: yes
+    priority: 9
+    source: http://test-server/chocolatey
+    source_username: test-user
+    source_password: password
+    certificate: C:\temp\cert.pfx
+
+
+- name: set a config value
+  win_chocolatey_config:
+    name: proxyUser
+    state: present
+    value: test-user
+
+- block:
+  - name: Gather facts from chocolatey
+    win_chocolatey_facts:
+
+  always:
+  - name: remove test source
+    win_chocolatey_source:
+      name: test|repo
+      state: absent
+
+  - name: unset config value
+    win_chocolatey_config:
+      name: proxyUser
+      state: absent
+
+- name: assert facts from chocolatey
+  assert:
+    that:
+    - quantum_chocolatey is not changed
+    - quantum_chocolatey.config.commandExecutionTimeoutSeconds == 2700
+    - quantum_chocolatey.config.proxyBypassOnLocal == True
+    - quantum_chocolatey.config.proxyUser == 'test-user'
+    - quantum_chocolatey.feature.checksumFiles == true
+    - quantum_chocolatey.packages[0].package == 'chocolatey'
+    - quantum_chocolatey.packages[0].version is defined
+    - quantum_chocolatey.sources[0].admin_only == False
+    - quantum_chocolatey.sources[0].allow_self_service == False
+    - quantum_chocolatey.sources[0].bypass_proxy == False
+    - quantum_chocolatey.sources[0].certificate == None
+    - quantum_chocolatey.sources[0].disabled == False
+    - quantum_chocolatey.sources[0].name == 'chocolatey'
+    - quantum_chocolatey.sources[0].priority == 0
+    - quantum_chocolatey.sources[0].source == 'https://chocolatey.org/api/v2/'
+    - quantum_chocolatey.sources[0].source_username == None
+    - quantum_chocolatey.sources[1].admin_only == True
+    - quantum_chocolatey.sources[1].allow_self_service == True
+    - quantum_chocolatey.sources[1].bypass_proxy == True
+    - quantum_chocolatey.sources[1].certificate == 'C:\\temp\\cert.pfx'
+    - quantum_chocolatey.sources[1].disabled == True
+    - quantum_chocolatey.sources[1].name == 'test|repo'
+    - quantum_chocolatey.sources[1].priority == 9
+    - quantum_chocolatey.sources[1].source == 'http://test-server/chocolatey'
+    - quantum_chocolatey.sources[1].source_username == 'test-user'

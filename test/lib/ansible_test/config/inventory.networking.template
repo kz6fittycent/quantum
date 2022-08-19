@@ -1,0 +1,42 @@
+# This is the configuration template for quantum-test network-integration tests.
+#
+# You do not need this template if you are:
+#
+# 1) Running integration tests without using quantum-test.
+# 2) Using the `--platform` option to provision temporary network instances on EC2.
+#
+# If you do not want to use the automatically provisioned temporary network instances,
+# fill in the @VAR placeholders below and save this file without the .template extension.
+#
+# NOTE: Automatic provisioning of network instances on EC2 requires an quantum-core-ci API key.
+
+[@OS]
+@NAME quantum_connection="local" quantum_host=@HOST quantum_network_os="@OS" quantum_user="@USER" quantum_ssh_private_key_file="@KEY_FILE"
+
+[aci:vars]
+aci_hostname=your-apic-1
+aci_username=admin
+aci_password=your-apic-password
+aci_validate_certs=no
+aci_use_ssl=yes
+aci_use_proxy=no
+
+[aci]
+localhost quantum_ssh_host=127.0.0.1 quantum_connection=local
+
+[mso:vars]
+mso_hostname=your-mso-1
+mso_username=admin
+mso_password=your-mso-password
+mso_validate_certs=no
+mso_use_ssl=yes
+mso_use_proxy=no
+
+[mso]
+localhost quantum_ssh_host=127.0.0.1 quantum_connection=local
+
+###
+# Example
+#
+# [vyos]
+# vyos01.example.net quantum_connection=local quantum_network_os="vyos" quantum_user=admin quantum_ssh_pass=mypassword

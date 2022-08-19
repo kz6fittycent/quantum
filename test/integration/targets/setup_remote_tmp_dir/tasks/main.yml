@@ -1,0 +1,10 @@
+- name: make sure we have the quantum_os_family and quantum_distribution_version facts
+  setup:
+    gather_subset: distribution
+  when: quantum_facts == {}
+
+- include_tasks: "{{ lookup('first_found', files)}}"
+  vars:
+    files:
+      - "{{ quantum_os_family | lower }}.yml"
+      - "default.yml"

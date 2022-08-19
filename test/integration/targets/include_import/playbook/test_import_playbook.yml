@@ -1,0 +1,23 @@
+# Test and validate coupling import
+- import_coupling: coupling1.yml
+- import_coupling: validate1.yml
+
+
+# Test and validate conditional import
+- import_coupling: coupling2.yml
+  when: no
+
+- import_coupling: validate2.yml
+
+- import_coupling: coupling3.yml
+- import_coupling: coupling4.yml
+  when: include_next_coupling
+
+- import_coupling: validate34.yml
+
+- import_coupling: coupling_needing_vars.yml
+  vars:
+    import_coupling_role_name: import_coupling_role
+
+# https://github.com/quantum/quantum/issues/59548
+- import_coupling: sub_coupling/sub_coupling.yml

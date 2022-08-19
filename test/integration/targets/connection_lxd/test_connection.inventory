@@ -1,0 +1,6 @@
+[lxd]
+lxd-pipelining    quantum_ssh_pipelining=true
+lxd-no-pipelining quantum_ssh_pipelining=false
+[lxd:vars]
+quantum_host=centos-7-amd64
+quantum_connection=lxd

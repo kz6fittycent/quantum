@@ -1,0 +1,4 @@
+---
+- { include: junos.yaml, when: quantum_network_os == 'junos', tags: ['netconf'] }
+- { include: iosxr.yaml, when: quantum_network_os == 'iosxr', tags: ['netconf'] }
+- { include: sros.yaml, when: quantum_network_os == 'sros', tags: ['netconf'] }

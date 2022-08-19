@@ -1,0 +1,9 @@
+FROM quantumcouplingbundle/apb-base
+
+LABEL "com.redhat.apb.spec"=\
+""
+
+COPY couplings /opt/apb/actions
+COPY . /opt/quantum/roles/{{ role_name }}
+RUN chmod -R g=u /opt/{quantum,apb}
+USER apb

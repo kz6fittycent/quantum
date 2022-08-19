@@ -1,0 +1,6 @@
+[docker]
+docker-pipelining    quantum_ssh_pipelining=true
+docker-no-pipelining quantum_ssh_pipelining=false
+[docker:vars]
+quantum_host=ubuntu-latest
+quantum_connection=docker

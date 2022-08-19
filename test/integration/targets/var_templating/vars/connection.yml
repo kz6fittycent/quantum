@@ -1,0 +1,3 @@
+quantum_become: "{{ my_var.become }}"
+quantum_become_method: "{{ my_var.become_method }}"
+quantum_connection: "{{ my_var.connection }}"
