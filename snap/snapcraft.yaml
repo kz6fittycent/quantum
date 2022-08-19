@@ -10,7 +10,9 @@ base: core20
 
 apps:
   quantum:
-    command: quantum
+    command: bin/quantum
+    command-chain: 
+      - bin/homeishome-launch    
     environment: 
       LC_ALL: C.UTF-8
     plugs:
@@ -26,6 +28,13 @@ parts:
     source-type: git
     plugin: python
       
+    override-build: |    
+      git clone https://github.com/kz6fittycent/quantum.git
+      cd quantum
+      python3 setup.py
+      
+      snapcraftctl build
+      
     build-packages:
       - python3
       - python3-jinja2
@@ -40,4 +49,9 @@ parts:
       - python3-yaml
       - python3-paramiko
       - python3-setuptools
-      - python3-cryptography      
+      - python3-cryptography 
+      
+  homeishome-launch:
+    plugin: nil
+    stage-snaps:
+      - homeishome-launch             
