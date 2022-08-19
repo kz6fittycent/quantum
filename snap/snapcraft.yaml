@@ -10,7 +10,7 @@ base: core20
 
 apps:
   quantum:
-    command: quantum
+    command: usr/local/bin/quantum
     environment: 
       LC_ALL: C.UTF-8
     plugs:
@@ -24,7 +24,9 @@ parts:
   quantum:
     source: https://github.com/kz6fittycent/quantum/
     source-type: git
-    plugin: python  
+    plugin: make
+    make-parameters:
+      - PREFIX=/usr/local
       
     build-packages:
       - python3
