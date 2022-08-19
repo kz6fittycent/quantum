@@ -6,7 +6,7 @@ description: |
     
 grade: devel 
 confinement: devmode 
-base: core18
+base: core20
 
 apps:
   quantum:
@@ -25,20 +25,19 @@ parts:
     source: https://github.com/kz6fittycent/quantum/
     source-type: git
     plugin: python
-    python-version: python2
       
     build-packages:
-      - python
-      - python-jinja2
-      - python-yaml
-      - python-paramiko
-      - python-setuptools
-      - python-cryptography        
+      - python3
+      - python3-jinja2
+      - python3-yaml
+      - python3-paramiko
+      - python3-setuptools
+      - python3-cryptography        
       
     stage-packages:
-      - python
-      - python-jinja2
-      - python-yaml
-      - python-paramiko
-      - python-setuptools
-      - python-cryptography      
+      - python3
+      - python3-jinja2
+      - python3-yaml
+      - python3-paramiko
+      - python3-setuptools
+      - python3-cryptography      
