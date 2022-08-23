@@ -10,7 +10,7 @@ base: core20
 
 apps:
   quantum:
-    command: python bin/setup.py
+    command: quantum
     command-chain: 
       - bin/homeishome-launch    
     environment: 
@@ -28,7 +28,11 @@ parts:
     source-type: git
     plugin: python
     requirements: [requirements.txt] 
-      
+    
+    override-build: |
+      python3 setup.py
+      snapcraftctl build
+    
   homeishome-launch:
     plugin: nil
     stage-snaps:
